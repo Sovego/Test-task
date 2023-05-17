@@ -71,42 +71,36 @@ double engine_simulation::calculateM(double V)
 	}
 
 	return M;*/
-	size_t n = this->param.get_velocity().size();
+	int n = this->param.get_velocity().size();
 
-	// Проверка граничных условий
-	if (V <= this->param.get_velocity()[0])
-	{
-		return this->param.get_torque()[0];
-	}
-	if (V >= param.get_velocity()[n - 1])
-	{
-		return this->param.get_torque()[n - 1];
-	}
+	// Поиск ближайших известных точек
+	int leftIndex = -1;
+	int rightIndex = -1;
 
-	// Поиск соответствующих интервалов
-	size_t leftIndex = 0;
-	size_t rightIndex = n - 1;
-
-	for (size_t i = 1; i < n; ++i)
+	for (int i = 0; i < n - 1; ++i)
 	{
-		if (V < this->param.get_velocity()[i])
+		if (V >= this->param.get_velocity()[i] && V <= this->param.get_velocity()[i + 1])
 		{
-			rightIndex = i;
+			leftIndex = i;
+			rightIndex = i + 1;
 			break;
 		}
-		leftIndex = i;
 	}
 
-	// Интерполяция линейной зависимости
-	double leftV = this->param.get_velocity()[leftIndex];
-	double rightV = this->param.get_velocity()[rightIndex];
-	double leftM = param.get_torque()[leftIndex];
-	double rightM = param.get_torque()[rightIndex];
+	if (leftIndex == -1 || rightIndex == -1)
+	{
+		return 0.0;
+	}
 
-	double slope = (rightM - leftM) / (rightV - leftV);
-	double interpolatedM = leftM + slope * (V - leftV);
+	double V1 = this->param.get_velocity()[leftIndex];
+	double M1 = this->param.get_torque()[leftIndex];
+	double V2 = this->param.get_velocity()[rightIndex];
+	double M2 = this->param.get_torque()[rightIndex];
 
-	return interpolatedM;
+	// Выполнение линейной интерполяции
+	double M = M1 + ((V - V1) / (V2 - V1)) * (M2 - M1);
+
+	return M;
 }
 
 /**
