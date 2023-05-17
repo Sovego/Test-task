@@ -18,6 +18,19 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EngineParameters.cpp" />
+    <ClCompile Include="EngineSimulation.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="TestTasks.cpp" />
+    <ClCompile Include="TUI.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EngineParameters.h" />
+    <ClInclude Include="EngineSimulation.h" />
+    <ClInclude Include="TestTasks.h" />
+    <ClInclude Include="TUI.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -127,19 +140,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="EngineParameters.cpp" />
-    <ClCompile Include="TUI.cpp" />
-    <ClCompile Include="EngineSimulation.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="TestTasks.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="EngineParameters.h" />
-    <ClInclude Include="TUI.h" />
-    <ClInclude Include="EngineSimulation.h" />
-    <ClInclude Include="TestTasks.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

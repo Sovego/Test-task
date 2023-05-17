@@ -15,10 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="EngineParameters.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EngineSimulation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TestTasks.cpp">
@@ -27,11 +30,11 @@
     <ClCompile Include="TUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EngineParameters.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EngineParameters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="EngineSimulation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -39,9 +42,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TUI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineParameters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

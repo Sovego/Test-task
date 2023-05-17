@@ -7,11 +7,11 @@
 class engine_simulation
 {
 public:
-	engine_simulation(const EngineParameters& param, double temperature_suf);
+	engine_simulation(const engine_parameters& param, double temperature_suf);
 	std::tuple<double, double, double> simulation_step(double);
 
 private:
-	EngineParameters param;
+	engine_parameters param;
 	double temperature_suf;
 	double temperature;
 	double M;

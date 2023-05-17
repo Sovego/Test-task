@@ -4,14 +4,14 @@
 /**
  * \brief Engine parameters class
  */
-class EngineParameters
+class engine_parameters
 {
 public:
-	EngineParameters(double inertia, std::vector<int> torque, const std::vector<int>& veloсity,
-	                 double heat_velocity_torque,
-	                 double heat_rate_crankshaft_rotation_speed, double cooling_rate);
+	engine_parameters(double inertia, std::vector<int> torque, const std::vector<int>& veloсity,
+	                  double heat_velocity_torque,
+	                  double heat_rate_crankshaft_rotation_speed, double cooling_rate);
 
-	EngineParameters();
+	engine_parameters();
 	void set_torgue(const std::vector<int>&);
 	std::vector<int> get_torque();
 	void set_velocity(const std::vector<int>&);

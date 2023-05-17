@@ -6,7 +6,7 @@
  * \param temperature_overheat Overheat temperature
  * \param timestep Model time step
  */
-TestTasks::TestTasks(const double temperature_overheat, const double timestep):
+test_tasks::test_tasks(const double temperature_overheat, const double timestep):
 	temperature_overheat(temperature_overheat), timestep(timestep)
 {
 }
@@ -14,7 +14,7 @@ TestTasks::TestTasks(const double temperature_overheat, const double timestep):
 /**
  * \brief This is constructor with default settings of Test
  */
-TestTasks::TestTasks(): temperature_overheat(110), timestep(0.5)
+test_tasks::test_tasks(): temperature_overheat(110), timestep(0.01)
 {
 }
 
@@ -23,10 +23,10 @@ TestTasks::TestTasks(): temperature_overheat(110), timestep(0.5)
  * \param temp_suf Surface temperature
  * \return Time when the test ended 
  */
-double TestTasks::temperature_test(const double temp_suf) const
+double test_tasks::temperature_test(const double temp_suf) const
 {
 	double TestTime = 0;
-	EngineParameters parameters;
+	engine_parameters parameters;
 	engine_simulation simulation(parameters, temp_suf);
 	double temperature = temp_suf, M, V;
 	while (temperature < this->temperature_overheat)
@@ -41,10 +41,10 @@ double TestTasks::temperature_test(const double temp_suf) const
  * \brief Maximum engine power test
  * \return Maximum engine power
  */
-double TestTasks::max_power_test()
+double test_tasks::max_power_test()
 {
-	double TestTime = 0;
-	EngineParameters parameters;
+	double TestTime = 0.0;
+	engine_parameters parameters;
 	engine_simulation simulation(parameters, 0);
 	double temperature = 0, M, V;
 	double N = 1, Nmax = -10, N_pred = -1;
