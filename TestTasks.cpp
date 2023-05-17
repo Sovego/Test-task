@@ -25,7 +25,7 @@ test_tasks::test_tasks(): temperature_overheat(110), timestep(0.01)
  */
 double test_tasks::temperature_test(const double temp_suf) const
 {
-	double TestTime = 0;
+	double TestTime = 1;
 	engine_parameters parameters;
 	engine_simulation simulation(parameters, temp_suf);
 	double temperature = temp_suf, M, V;
@@ -41,7 +41,7 @@ double test_tasks::temperature_test(const double temp_suf) const
  * \brief Maximum engine power test
  * \return Maximum engine power
  */
-double test_tasks::max_power_test()
+double test_tasks::max_power_test() const
 {
 	double TestTime = 0.0;
 	engine_parameters parameters;

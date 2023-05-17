@@ -12,7 +12,7 @@ public:
 	test_tasks();
 
 	double temperature_test(double) const;
-	double max_power_test();
+	double max_power_test() const;
 
 private:
 	double temperature_overheat;

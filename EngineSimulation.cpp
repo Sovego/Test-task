@@ -112,7 +112,8 @@ std::tuple<double, double, double> engine_simulation::simulation_step(const doub
 {
 	this->M = calculateM(V); // Текущий момент
 	double a = this->M / param.get_inertia(); // Расчет ускорения
-	double VH = M * this->param.get_heat_velocity_torque() + V * this->param.get_heat_rate_crankshaft_rotation_speed();
+	double VH = M * this->param.get_heat_velocity_torque() + pow(V, 2) * this->param.
+	                                                                           get_heat_rate_crankshaft_rotation_speed();
 	// Расчет скорости нагрева
 	double deltaT = VH * time; // Изменение температуры (deltaT = VH * t)
 	this->temperature += deltaT; // Обновление значения температуры

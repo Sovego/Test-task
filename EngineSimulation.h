@@ -1,6 +1,6 @@
 #pragma once
 #include "EngineParameters.h"
-
+#include <math.h>
 /**
  * \brief Class for engine simulation
  */
