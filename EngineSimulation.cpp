@@ -21,7 +21,7 @@ engine_simulation::engine_simulation(const engine_parameters& param, const doubl
  */
 double engine_simulation::calculateM(double V)
 {
-	double M;
+	/*double M;
 	switch (static_cast<int>(V))
 	{
 	case 0:
@@ -70,43 +70,43 @@ double engine_simulation::calculateM(double V)
 		break;
 	}
 
-	return M;
-	//size_t n = this->param.get_velocity().size();
+	return M;*/
+	size_t n = this->param.get_velocity().size();
 
-	//// Проверка граничных условий
-	//if (V <= this->param.get_velocity()[0])
-	//{
-	//	return this->param.get_torque()[0];
-	//}
-	//if (V >= param.get_velocity()[n - 1])
-	//{
-	//	return this->param.get_torque()[n - 1];
-	//}
+	// Проверка граничных условий
+	if (V <= this->param.get_velocity()[0])
+	{
+		return this->param.get_torque()[0];
+	}
+	if (V >= param.get_velocity()[n - 1])
+	{
+		return this->param.get_torque()[n - 1];
+	}
 
-	//// Поиск соответствующих интервалов
-	//size_t leftIndex = 0;
-	//size_t rightIndex = n - 1;
+	// Поиск соответствующих интервалов
+	size_t leftIndex = 0;
+	size_t rightIndex = n - 1;
 
-	//for (size_t i = 1; i < n; ++i)
-	//{
-	//	if (V < this->param.get_velocity()[i])
-	//	{
-	//		rightIndex = i;
-	//		break;
-	//	}
-	//	leftIndex = i;
-	//}
+	for (size_t i = 1; i < n; ++i)
+	{
+		if (V < this->param.get_velocity()[i])
+		{
+			rightIndex = i;
+			break;
+		}
+		leftIndex = i;
+	}
 
-	//// Интерполяция линейной зависимости
-	//double leftV = this->param.get_velocity()[leftIndex];
-	//double rightV = this->param.get_velocity()[rightIndex];
-	//double leftM = param.get_torque()[leftIndex];
-	//double rightM = param.get_torque()[rightIndex];
+	// Интерполяция линейной зависимости
+	double leftV = this->param.get_velocity()[leftIndex];
+	double rightV = this->param.get_velocity()[rightIndex];
+	double leftM = param.get_torque()[leftIndex];
+	double rightM = param.get_torque()[rightIndex];
 
-	//double slope = (rightM - leftM) / (rightV - leftV);
-	//double interpolatedM = leftM + slope * (V - leftV);
+	double slope = (rightM - leftM) / (rightV - leftV);
+	double interpolatedM = leftM + slope * (V - leftV);
 
-	//return interpolatedM;
+	return interpolatedM;
 }
 
 /**
